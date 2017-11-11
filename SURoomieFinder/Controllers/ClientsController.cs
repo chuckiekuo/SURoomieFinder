@@ -21,9 +21,18 @@ namespace SURoomieFinder.Controllers
             return View(await db.Clients.ToListAsync());
         }
 
-        public ActionResult QuestionDetails(int id)
+        public ActionResult QuestionDetails(string id = null)
         {
-            var myClient = db.Clients.Find(id);
+
+            int myID = 0;
+
+            if (!Int32.TryParse(id, out myID))
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var myClient = db.Clients.Find(myID);
+
             string response = "";
             int i = 0;
             Dictionary<string, string> output = new Dictionary<string, string>();
@@ -44,17 +53,27 @@ namespace SURoomieFinder.Controllers
             return View();
         }
         // GET: Clients/Details/5
-        public async Task<ActionResult> Details(int? id)
+        public async Task<ActionResult> Details(string id = null)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Client client = await db.Clients.FindAsync(id);
+
+            int myID = 0;
+
+            if (!Int32.TryParse(id, out myID))
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Client client = await db.Clients.FindAsync(myID);
+
             if (client == null)
             {
                 return HttpNotFound();
             }
+
             return View(client);
         }
 
@@ -84,13 +103,21 @@ namespace SURoomieFinder.Controllers
         }
 
         // GET: Clients/Edit/5
-        public async Task<ActionResult> Edit(int? id)
+        public async Task<ActionResult> Edit(string id = null)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Client client = await db.Clients.FindAsync(id);
+
+            int myID = 0;
+
+            if (!Int32.TryParse(id, out myID))
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Client client = await db.Clients.FindAsync(myID);
             if (client == null)
             {
                 return HttpNotFound();
@@ -103,7 +130,9 @@ namespace SURoomieFinder.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Email,Password,FirstName,Age,Major,Job,Phone,Gender,Hometown")] Client client)
+        public async Task<ActionResult> Edit([Bind(Include = 
+            "Id,Email,Password,FirstName,Age,Major,Job,Phone,Gender,Hometown")
+            ] Client client)
         {
             if (ModelState.IsValid)
             {
@@ -115,17 +144,28 @@ namespace SURoomieFinder.Controllers
         }
 
         // GET: Clients/Delete/5
-        public async Task<ActionResult> Delete(int? id)
+        public async Task<ActionResult> Delete(string id = null)
         {
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Client client = await db.Clients.FindAsync(id);
+
+            int myID = 0;
+
+            if (!Int32.TryParse(id, out myID))
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Client client = await db.Clients.FindAsync(myID);
+
             if (client == null)
             {
                 return HttpNotFound();
             }
+
             return View(client);
         }
 
