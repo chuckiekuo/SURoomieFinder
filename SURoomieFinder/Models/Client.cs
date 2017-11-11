@@ -23,6 +23,7 @@ namespace SURoomieFinder.Models
         public string Hometown { get; set; }
 
         public Questions QuestionList = new Questions();
+ 
     }
 
     public class ClientDbContext : DbContext

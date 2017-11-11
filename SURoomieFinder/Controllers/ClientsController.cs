@@ -18,17 +18,31 @@ namespace SURoomieFinder.Controllers
         // GET: Clients
         public async Task<ActionResult> Index()
         {
-            //var myClient = db.Clients.Find(id);
-
-            //if (myClient == null)
-            //{
-            //    return RedirectToAction("Error");
-            //}
-
-
             return View(await db.Clients.ToListAsync());
         }
 
+        public ActionResult QuestionDetails(int id)
+        {
+            var myClient = db.Clients.Find(id);
+            string response = "";
+            int i = 0;
+            Dictionary<string, string> output = new Dictionary<string, string>();
+
+            foreach (KeyValuePair<string, int> entry in myClient.QuestionList.MyQuestionDictionary){
+
+                switch (entry.Value)
+                {
+                    case -1:
+                        response = "Not answered";
+                        break;
+                }
+
+                output.Add(entry.Key, response);
+            }
+
+            ViewBag.QuestionsDictionary = output;
+            return View();
+        }
         // GET: Clients/Details/5
         public async Task<ActionResult> Details(int? id)
         {
