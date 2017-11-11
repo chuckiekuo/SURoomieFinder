@@ -21,5 +21,10 @@ namespace SURoomieFinder.Models
 				MyQuestionDictionary.Add(questions[i], -1);
 			}
 		}
+
+        public int GetLength()
+        {
+            return questions.Count();
+        }
 	}
 }

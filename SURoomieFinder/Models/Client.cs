@@ -21,8 +21,8 @@ namespace SURoomieFinder.Models
         public string Phone { get; set; }
         public string Gender { get; set; }
         public string Hometown { get; set; }
-        
 
+        public Questions QuestionList = new Questions();
     }
 
     public class ClientDbContext : DbContext
