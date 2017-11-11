@@ -18,6 +18,14 @@ namespace SURoomieFinder.Controllers
         // GET: Clients
         public async Task<ActionResult> Index()
         {
+            //var myClient = db.Clients.Find(id);
+
+            //if (myClient == null)
+            //{
+            //    return RedirectToAction("Error");
+            //}
+
+
             return View(await db.Clients.ToListAsync());
         }
 
@@ -47,13 +55,15 @@ namespace SURoomieFinder.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Email,Password,FirstName,Age,Major,Job,Phone,Gender,Hometown")] Client client)
+        public async Task<ActionResult> Create([Bind(Include = 
+            "Id,Email,Password,FirstName,Age,Major,Job,Phone,Gender,Hometown"
+            )] Client client)
         {
             if (ModelState.IsValid)
             {
                 db.Clients.Add(client);
                 await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details/" + client.Id);//, client.Id);
             }
 
             return View(client);
