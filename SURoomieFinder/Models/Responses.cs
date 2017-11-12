@@ -14,7 +14,6 @@ namespace SURoomieFinder.Models
         "How much time do you spend at home?", "Do you prefer to live in housing with accomodations for people with disabilities?", "Do you prefer to live in housing with exclusively members of the LGBTQ+ community?", "Do you prefer to live with people of the same gender?",
         "What noise level are you comfortable with in your living situation?"});
 
-        [Display(Name = questions[0])]
         public int Question1 { get; set; }
     }
 }
