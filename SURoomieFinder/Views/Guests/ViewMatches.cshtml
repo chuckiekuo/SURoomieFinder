@@ -1,18 +1,11 @@
-﻿
+﻿@model List<SURoomieFinder.Models.Responses>
 @{
     ViewBag.Title = "View Matches";
 }
 
 <h2>ViewMatches</h2>
 
-@foreach (var item in ViewBag.MatchList)
+@foreach (var item in Model)
 {
-    <p>
-        @item.Key.FirstName
-
-        @item.Value
-        
-        @Html.ActionLink("Details", "Details", new { id = item.Key.Id})
-    </p>
-  
+    <p>@item.myClient.FirstName      @item.myMatchScore      @Html.ActionLink("Details", "Details", new { id = item.myClient.Id }) </p>
 }

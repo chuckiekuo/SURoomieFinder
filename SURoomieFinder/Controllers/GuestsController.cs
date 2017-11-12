@@ -75,8 +75,12 @@ namespace SURoomieFinder.Controllers
 
         public ActionResult ViewMatches(int? id)
         {
+            int diff = 0;
+            int match = 365;
             Guest me = db.Guests.Find(id);
             List<Guest> myGuestList = db.Guests.ToList();
+            List<Responses> myResponseList = new List<Responses>();
+
             Dictionary<Guest, float> myResult = new Dictionary<Guest, float>();
             Answers answers = new Answers();
             int numAnswers = answers.GetSum();
@@ -84,7 +88,7 @@ namespace SURoomieFinder.Controllers
             for (int i = 0; i < myGuestList.Count(); i++)
             {
                 if (myGuestList[i].Id != me.Id) {
-                    int diff = Math.Abs(me.Question1 - myGuestList[i].Question1);
+                    diff = Math.Abs(me.Question1 - myGuestList[i].Question1);
                     diff += Math.Abs(me.Question2 - myGuestList[i].Question2);
                     diff += Math.Abs(me.Question3 - myGuestList[i].Question3);
                     diff += Math.Abs(me.Question4 - myGuestList[i].Question4);
@@ -99,13 +103,21 @@ namespace SURoomieFinder.Controllers
                     diff += Math.Abs(me.Question13 - myGuestList[i].Question13);
                     diff += Math.Abs(me.Question14 - myGuestList[i].Question14);
                     diff += Math.Abs(me.Question15 - myGuestList[i].Question15);
-                    int match = ((numAnswers - diff) / numAnswers) * 100; // Why is this zero?
+
+                    match = numAnswers - diff;
+                    match *= 100;
+                    match /= numAnswers;
+                    Responses myResponse = new Responses(myGuestList[i], match);
+                    myResponseList.Add(myResponse);
                     myResult.Add(myGuestList[i], match);
                 }
             }
 
-            ViewBag.MatchList = myResult;
-            return View();
+            List<Responses> SortedList = myResponseList.OrderBy(o => o.myMatchScore).ToList();
+            SortedList.Reverse();
+            //ViewBag.MatchList = myResult;
+            ViewBag.MatchList = SortedList;
+            return View(SortedList);
         }
 
         // GET: Guests/Create
