@@ -90,127 +90,242 @@
             @Html.LabelFor(model => model.Question1, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <p>
-                @Html.RadioButtonFor(model => model.Question1, "0") West Seattle</p>
-                @Html.RadioButtonFor(model => model.Question1, "1")
-                @Html.RadioButtonFor(model => model.Question1, "2")
-                @Html.RadioButtonFor(model => model.Question1, "3")
-                @Html.RadioButtonFor(model => model.Question1, "4")
-                @Html.RadioButtonFor(model => model.Question1, "5")
-                @Html.RadioButtonFor(model => model.Question1, "6")
-                @Html.RadioButtonFor(model => model.Question1, "7")
-                @Html.RadioButtonFor(model => model.Question1, "8")
+                @Html.RadioButtonFor(model => model.Question1, "0") West Seattle
+				</p><p>
+                @Html.RadioButtonFor(model => model.Question1, "1") South Downtown
+				</p><p>
+                @Html.RadioButtonFor(model => model.Question1, "2") International District
+				</p><p>
+                @Html.RadioButtonFor(model => model.Question1, "3") Downtown
+				</p><p>
+                @Html.RadioButtonFor(model => model.Question1, "4") Capitol Hill
+				</p><p>
+                @Html.RadioButtonFor(model => model.Question1, "5") Madrona
+				</p><p>
+                @Html.RadioButtonFor(model => model.Question1, "6") Queen Anne
+				</p><p>
+                @Html.RadioButtonFor(model => model.Question1, "7") Ballard
+				</p><p>
+                @Html.RadioButtonFor(model => model.Question1, "8") Fremont
+				</p><p>
+				@Html.RadioButtonFor(model => model.Question1, "9") University District
+				</p>
             </div>
         </div>
-
+		
         <div class="form-group">
             @Html.LabelFor(model => model.Question2, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Question2, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Question2, "", new { @class = "text-danger" })
+				<p>
+					@Html.RadioButtonFor(model => model.Question2, "0") $0 - $500
+				</p><p>
+					@Html.RadioButtonFor(model => model.Question2, "1") $501 - $800
+				</p><p>
+					@Html.RadioButtonFor(model => model.Question2, "2") $801 - $1,100
+				</p><p>
+					@Html.RadioButtonFor(model => model.Question2, "3") $1,100 - $1,500
+				</p><p>
+					@Html.RadioButtonFor(model => model.Question2, "4") $1,500+
+				</p>
             </div>
         </div>
-
+		
         <div class="form-group">
             @Html.LabelFor(model => model.Question3, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Question3, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Question3, "", new { @class = "text-danger" })
+				<p>
+					@Html.RadioButtonFor(model => model.Question3, "0") Small apartment
+				</p><p>
+					@Html.RadioButtonFor(model => model.Question3, "1") High rise
+				</p><p>
+					@Html.RadioButtonFor(model => model.Question3, "2") Duplex
+				</p><p>
+					@Html.RadioButtonFor(model => model.Question3, "3") Full house
+				</p>
+                
             </div>
         </div>
-
+		
         <div class="form-group">
             @Html.LabelFor(model => model.Question4, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Question4, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Question4, "", new { @class = "text-danger" })
+				<p>
+				    @Html.RadioButtonFor(model => model.Question4, "0") None
+				</p><p>
+					@Html.RadioButtonFor(model => model.Question4, "1") Fish
+				</p><p>
+					@Html.RadioButtonFor(model => model.Question4, "2") Amphibian
+				</p><p>
+					@Html.RadioButtonFor(model => model.Question4, "3") Reptile
+				</p><p>
+					@Html.RadioButtonFor(model => model.Question4, "4") Bird
+				</p><p>
+					@Html.RadioButtonFor(model => model.Question4, "5") Vermin
+				</p><p>
+					@Html.RadioButtonFor(model => model.Question4, "6") Cats
+				</p><p>
+					@Html.RadioButtonFor(model => model.Question4, "7") Dogs
+				</p><p>
+					@Html.RadioButtonFor(model => model.Question4, "8") Cats and Dogs
+				</p>
+
             </div>
         </div>
-
+	
         <div class="form-group">
             @Html.LabelFor(model => model.Question5, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Question5, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Question5, "", new { @class = "text-danger" })
+				<p>
+					@Html.RadioButtonFor(model => model.Question5, "0") No, and I DO mind if my roomie does
+				</p><p>
+					@Html.RadioButtonFor(model => model.Question5, "1") No, and I DO NOT mind if my roomie does
+				</p><p>
+					@Html.RadioButtonFor(model => model.Question5, "2") Yes (Occasionally)
+				</p><p>
+					@Html.RadioButtonFor(model => model.Question5, "3") Yes (Often)
+				</p>
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Question6, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Question6, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Question6, "", new { @class = "text-danger" })
+				<p>
+					@Html.RadioButtonFor(model => model.Question6, "0") No, and I DO mind if my roomie does
+				</p><p>
+					@Html.RadioButtonFor(model => model.Question6, "1") No, and I DO NOT mind if my roomie does
+				</p><p>
+					@Html.RadioButtonFor(model => model.Question6, "2") Yes (Occasionally)
+				</p><p>
+					@Html.RadioButtonFor(model => model.Question6, "3") Yes (Often)
+				</p>
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Question7, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Question7, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Question7, "", new { @class = "text-danger" })
+				<p>
+					@Html.RadioButtonFor(model => model.Question7, "0") No, and I DO mind if my roomie does
+				</p><p>
+					@Html.RadioButtonFor(model => model.Question7, "1") No, and I DO NOT mind if my roomie does
+				</p><p>
+					@Html.RadioButtonFor(model => model.Question7, "2") Yes (Occasionally)
+				</p><p>
+					@Html.RadioButtonFor(model => model.Question7, "3") Yes (Often)
+				</p>
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Question8, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Question8, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Question8, "", new { @class = "text-danger" })
+				<p>
+					@Html.RadioButtonFor(model => model.Question8, "0") No, and I DO mind if my roomie does
+				</p><p>
+					@Html.RadioButtonFor(model => model.Question8, "1") No, and I DO NOT mind if my roomie does
+				</p><p>
+					@Html.RadioButtonFor(model => model.Question8, "2") Yes (Occasionally)
+				</p><p>
+					@Html.RadioButtonFor(model => model.Question8, "3") Yes (Often)
+				</p>
             </div>
         </div>
-
+	
         <div class="form-group">
             @Html.LabelFor(model => model.Question9, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Question9, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Question9, "", new { @class = "text-danger" })
+				<p>
+					@Html.RadioButtonFor(model => model.Question9, "0") Very messy
+				</p><p>
+					@Html.RadioButtonFor(model => model.Question9, "1") Somewhat messy
+				</p><p>
+					@Html.RadioButtonFor(model => model.Question9, "2") Not particularly clean or messy
+				</p><p>
+					@Html.RadioButtonFor(model => model.Question9, "3") Somewhat clean
+				</p><p>
+					@Html.RadioButtonFor(model => model.Question9, "4") Very clean
+				</p>
             </div>
         </div>
-
+	
         <div class="form-group">
             @Html.LabelFor(model => model.Question10, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Question10, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Question10, "", new { @class = "text-danger" })
+				<p>
+					@Html.RadioButtonFor(model => model.Question10, "0") Prefer no guests
+				</p><p>
+					@Html.RadioButtonFor(model => model.Question10, "1") Prefer somewhat infrequent guests
+				</p><p>
+					@Html.RadioButtonFor(model => model.Question10, "2") Prefer somewhat frequent guests
+				</p><p>
+					@Html.RadioButtonFor(model => model.Question10, "3") Prefer frequent guests
+				</p>
             </div>
         </div>
-
+	
         <div class="form-group">
             @Html.LabelFor(model => model.Question11, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Question11, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Question11, "", new { @class = "text-danger" })
+				<p>
+					@Html.RadioButtonFor(model => model.Question11, "0") Spend very little time at home
+				</p><p>
+					@Html.RadioButtonFor(model => model.Question11, "1") Spend some leisure time at home
+				</p><p>
+					@Html.RadioButtonFor(model => model.Question11, "2") Spend a good deal of leisure time at home
+				</p><p>
+					@Html.RadioButtonFor(model => model.Question11, "3") Spend majority of leisure time at home
+				</p>
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Question12, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Question12, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Question12, "", new { @class = "text-danger" })
+				<p>
+					@Html.RadioButtonFor(model => model.Question12, "0") Yes
+				</p><p>
+					@Html.RadioButtonFor(model => model.Question12, "1") No
+				</p>
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Question13, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Question13, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Question13, "", new { @class = "text-danger" })
+				<p>
+					@Html.RadioButtonFor(model => model.Question13, "0") Yes
+				</p><p>
+					@Html.RadioButtonFor(model => model.Question13, "1") No
+				</p>
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Question14, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Question14, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Question14, "", new { @class = "text-danger" })
+				<p>
+					@Html.RadioButtonFor(model => model.Question14, "0") Yes
+				</p><p>
+					@Html.RadioButtonFor(model => model.Question14, "1") No
+				</p>
             </div>
         </div>
-
+		
         <div class="form-group">
             @Html.LabelFor(model => model.Question15, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Question15, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Question15, "", new { @class = "text-danger" })
+				<p>
+					@Html.RadioButtonFor(model => model.Question15, "0") Very quiet
+				</p><p>
+					@Html.RadioButtonFor(model => model.Question15, "1") Somewhat quiet
+				</p><p>
+					@Html.RadioButtonFor(model => model.Question15, "2") Not loud nor quiet
+				</p><p>
+					@Html.RadioButtonFor(model => model.Question15, "3") Somewhat noisy
+				</p><p>
+					@Html.RadioButtonFor(model => model.Question15, "4") Very noisy
+				</p>
             </div>
         </div>
 
