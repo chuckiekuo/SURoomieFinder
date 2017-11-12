@@ -27,6 +27,12 @@ namespace SURoomieFinder.Controllers
             return View();
         }
 
+        public ActionResult Login([Bind(Include = "Email,Password")]Guest guest)
+        {
+            var entry = db.Guests.FirstOrDefault(acc => acc.Email == guest.Email);
+            return RedirectToAction("MyPortal/" + (entry.Id.ToString()));
+        }
+
         public async Task<ActionResult> ViewAnswers(string id)
         {
             if (id == null)
