@@ -219,6 +219,7 @@
     <Content Include="Views\Guests\ViewAnswers.cshtml" />
     <Content Include="Views\Guests\ViewMatches.cshtml" />
     <Content Include="Views\Guests\MyPortal.cshtml" />
+    <Content Include="Views\Guests\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
