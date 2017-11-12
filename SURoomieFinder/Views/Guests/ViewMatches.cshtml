@@ -5,7 +5,39 @@
 
 <h2>ViewMatches</h2>
 
-@foreach (var item in Model)
-{
-    <p>@item.myClient.FirstName      @item.myMatchScore      @Html.ActionLink("Details", "Details", new { id = item.myClient.Id }) </p>
-}
+<table class=" = table">
+	<tr>
+		<th>
+			First Name
+		</th>
+		<th>
+			Match Percentage
+		</th>
+		<th>
+			View Details
+		</th>
+		<th>
+			View Answers
+		</th>
+		<th></th>
+	</tr>
+
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>
+				@item.myClient.FirstName
+			</td>
+			<td>
+				@item.myMatchScore
+			</td>
+			<td>
+				@Html.ActionLink("Details", "Details", new { id = item.myClient.Id })
+			</td>
+			<td>
+				@Html.ActionLink("View Answers", "ViewAnswers", new { id = item.myClient.Id })
+			</td>
+		</tr>
+	}
+
+</table>
