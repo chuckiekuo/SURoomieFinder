@@ -1,23 +1,23 @@
 ﻿@model SURoomieFinder.Models.DummyGuest
 @{
 
-    ViewBag.Title = "ViewAnswers";
+    ViewBag.Title = "View Answers";
 
 }
 
 <h2>View Answers</h2>
 
 <div>
-    <h4>@Html.DisplayFor(model => model.FirstName)'s answers</h4>
+    <h4><font size = "5">@Html.DisplayFor(model => model.FirstName)'s answers</font></h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
+        <div class="col-md-6">
             Which neighborhood do you want to live in?
-        </dt>
+        </div>
 
-        <dd>
+        <div class = "col-md-6">
              @Html.DisplayFor(model => model.Q1)
-        </dd>
+        </div>
 
         <dt>
             How much are you willing to spend per month on rent?
