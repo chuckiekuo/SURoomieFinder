@@ -33,8 +33,6 @@ namespace SURoomieFinder.Controllers
 
             var myClient = db.Clients.Find(myID);
 
-            ViewBag.QuestionDictionary = myClient.QuestionList.MyQuestionDictionary;
-
             return View();
         }
 
