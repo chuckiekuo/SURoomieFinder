@@ -158,6 +158,7 @@
     </Compile>
     <Compile Include="Models\Answers.cs" />
     <Compile Include="Models\Client.cs" />
+    <Compile Include="Models\ClientResponseViewModel.cs" />
     <Compile Include="Models\Questions.cs" />
     <Compile Include="Models\Responses.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

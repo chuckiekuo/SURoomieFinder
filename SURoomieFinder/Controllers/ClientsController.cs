@@ -33,9 +33,42 @@ namespace SURoomieFinder.Controllers
 
             var myClient = db.Clients.Find(myID);
 
-            return View();
+            return View(myClient);
         }
+        
+        [HttpPost]
+        public async Task<ActionResult>AnswerQuestions(string id = null, [Bind(Include =
+            "Question1,Question2,Question3,Question4,Question5,Question6,Question7,Question8,Question9,Question10,Question11,Question12,Question13,Question14,Question15"
+            )] Responses response)
+        {
+            int myID = 0;
 
+            if (!Int32.TryParse(id, out myID))
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            if (ModelState.IsValid)
+            {
+                var myClient = db.Clients.Find(myID);
+                myClient.ResponseList.Question1 = response.Question1;
+                myClient.ResponseList.Question1 = response.Question2;
+                myClient.ResponseList.Question1 = response.Question3;
+                myClient.ResponseList.Question1 = response.Question4;
+                myClient.ResponseList.Question1 = response.Question5;
+                myClient.ResponseList.Question1 = response.Question6;
+                myClient.ResponseList.Question1 = response.Question7;
+                myClient.ResponseList.Question1 = response.Question8;
+                myClient.ResponseList.Question1 = response.Question9;
+                myClient.ResponseList.Question1 = response.Question10;
+                myClient.ResponseList.Question1 = response.Question11;
+                myClient.ResponseList.Question1 = response.Question12;
+                myClient.ResponseList.Question1 = response.Question13;
+                myClient.ResponseList.Question1 = response.Question14;
+                myClient.ResponseList.Question1 = response.Question15;
+            }
+
+        }
 
         public ActionResult QuestionDetails(string id = null)
         {
