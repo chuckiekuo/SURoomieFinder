@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "View Matches";
+}
+
+<h2>ViewMatches</h2>
+
+@foreach (var item in ViewBag.MatchList)
+{
+    <p>
+        @item.Key.FirstName
+
+        @item.Value
+        
+        @Html.ActionLink("Details", "Details", new { id = item.Key.Id})
+    </p>
+  
+}

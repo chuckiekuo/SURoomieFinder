@@ -73,6 +73,41 @@ namespace SURoomieFinder.Controllers
             return View(guest);
         }
 
+        public ActionResult ViewMatches(int? id)
+        {
+            Guest me = db.Guests.Find(id);
+            List<Guest> myGuestList = db.Guests.ToList();
+            Dictionary<Guest, float> myResult = new Dictionary<Guest, float>();
+            Answers answers = new Answers();
+            int numAnswers = answers.GetSum();
+
+            for (int i = 0; i < myGuestList.Count(); i++)
+            {
+                if (myGuestList[i].Id != me.Id) {
+                    int diff = Math.Abs(me.Question1 - myGuestList[i].Question1);
+                    diff += Math.Abs(me.Question2 - myGuestList[i].Question2);
+                    diff += Math.Abs(me.Question3 - myGuestList[i].Question3);
+                    diff += Math.Abs(me.Question4 - myGuestList[i].Question4);
+                    diff += Math.Abs(me.Question5 - myGuestList[i].Question5);
+                    diff += Math.Abs(me.Question6 - myGuestList[i].Question6);
+                    diff += Math.Abs(me.Question7 - myGuestList[i].Question7);
+                    diff += Math.Abs(me.Question8 - myGuestList[i].Question8);
+                    diff += Math.Abs(me.Question9 - myGuestList[i].Question9);
+                    diff += Math.Abs(me.Question10 - myGuestList[i].Question10);
+                    diff += Math.Abs(me.Question11 - myGuestList[i].Question11);
+                    diff += Math.Abs(me.Question12 - myGuestList[i].Question12);
+                    diff += Math.Abs(me.Question13 - myGuestList[i].Question13);
+                    diff += Math.Abs(me.Question14 - myGuestList[i].Question14);
+                    diff += Math.Abs(me.Question15 - myGuestList[i].Question15);
+                    int match = ((numAnswers - diff) / numAnswers) * 100; // Why is this zero?
+                    myResult.Add(myGuestList[i], match);
+                }
+            }
+
+            ViewBag.MatchList = myResult;
+            return View();
+        }
+
         // GET: Guests/Create
         public ActionResult Create()
         {
