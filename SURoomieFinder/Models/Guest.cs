@@ -11,14 +11,27 @@ namespace SURoomieFinder.Models
     {
         [Key]
         public int Id { get; set; }
-
+		[Required(ErrorMessage = "Must include a valid SeattleU E-mail address!")]
+		[DataType(DataType.EmailAddress)]
+		[RegularExpression(@"[A-Za-z0-9]+@[seattleu.edu]$", ErrorMessage = "Not a valid SeattleU E-mail address!")]
         public string Email { get; set; }
+
+		[Required(ErrorMessage = "Must include a password!")]
         public string Password { get; set; }
+
+		[Required(ErrorMessage = "Must include your first name!")]
+		[Display(Name = "First name")]
         public string FirstName { get; set; }
+
+		[Required(ErrorMessage = "Must include your age!")]
         public string Age { get; set; }
         public string Major { get; set; }
         public string Job { get; set; }
-        public string Phone { get; set; }
+
+		[Required(ErrorMessage = "Must include a valid phone number!")]
+		[DataType(DataType.PhoneNumber)]
+		[RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Not a valid phone number")]
+		public string Phone { get; set; }
         public string Gender { get; set; }
         public string Hometown { get; set; }
 
