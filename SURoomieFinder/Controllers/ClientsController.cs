@@ -21,6 +21,24 @@ namespace SURoomieFinder.Controllers
             return View(await db.Clients.ToListAsync());
         }
 
+        [HttpGet]
+        public ActionResult AnswerQuestions(string id = null)
+        {
+            int myID = 0;
+
+            if (!Int32.TryParse(id, out myID))
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var myClient = db.Clients.Find(myID);
+
+            ViewBag.QuestionDictionary = myClient.QuestionList.MyQuestionDictionary;
+
+            return View();
+        }
+
+
         public ActionResult QuestionDetails(string id = null)
         {
 

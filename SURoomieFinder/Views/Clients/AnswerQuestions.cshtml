@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "Answer Questions";
+}
+
+<h2>Answer Questions</h2>
+
+@foreach (var item in ViewBag.QuestionDictionary)
+{
+    <ul>
+        <li>
+            @item.Key<br />
+                <input type="text" id="@item.Key" />
+                <input type="hidden" value="@item.Value" />
+        </li>
+    </ul>
+}
+
+<input type="submit" value="AnswerQuestions" class="btn btn-default" />
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
