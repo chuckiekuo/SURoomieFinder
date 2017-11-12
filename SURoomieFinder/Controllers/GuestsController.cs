@@ -21,6 +21,43 @@ namespace SURoomieFinder.Controllers
             return View(await db.Guests.ToListAsync());
         }
 
+        public async Task<ActionResult> ViewAnswers(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Guest guest = await db.Guests.FindAsync(id);
+            Answers answers = new Answers();
+            if (guest == null)
+            {
+                return HttpNotFound();
+            }
+
+            List<string> output = new List<string>();
+
+            
+           output.Add(answers.AnswerPrompts[0][guest.Question1]);
+            output.Add(answers.AnswerPrompts[0][guest.Question2]);
+            output.Add(answers.AnswerPrompts[0][guest.Question3]);
+            output.Add(answers.AnswerPrompts[0][guest.Question4]);
+            output.Add(answers.AnswerPrompts[0][guest.Question5]);
+            output.Add(answers.AnswerPrompts[0][guest.Question6]);
+            output.Add(answers.AnswerPrompts[0][guest.Question7]);
+            output.Add(answers.AnswerPrompts[0][guest.Question8]);
+            output.Add(answers.AnswerPrompts[0][guest.Question9]);
+            output.Add(answers.AnswerPrompts[0][guest.Question10]);
+            output.Add(answers.AnswerPrompts[0][guest.Question11]);
+            output.Add(answers.AnswerPrompts[0][guest.Question12]);
+            output.Add(answers.AnswerPrompts[0][guest.Question13]);
+            output.Add(answers.AnswerPrompts[0][guest.Question14]);
+            output.Add(answers.AnswerPrompts[0][guest.Question15]);
+
+            ViewBag.printList = output;
+
+            return View(guest);
+        }
         // GET: Guests/Details/5
         public async Task<ActionResult> Details(int? id)
         {
@@ -53,7 +90,7 @@ namespace SURoomieFinder.Controllers
             {
                 db.Guests.Add(guest);
                 await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details/" + guest.Id);
             }
 
             return View(guest);
