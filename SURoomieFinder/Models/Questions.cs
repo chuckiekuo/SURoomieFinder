@@ -22,6 +22,11 @@ namespace SURoomieFinder.Models
 			}
 		}
 
+        public Questions(Responses response)
+        {
+
+        }
+
         public int GetLength()
         {
             return questions.Count();

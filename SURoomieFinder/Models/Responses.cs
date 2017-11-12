@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
@@ -13,6 +14,9 @@ namespace SURoomieFinder.Models
         "Do you drink alcohol?", "Do you smoke cigarettes?", "Are you 420 friendly?", "Do you partake in other substances not previously listed?", "How would you rate your own cleanliness in a living situation?", "What is your comfort with having guests in your living space?",
         "How much time do you spend at home?", "Do you prefer to live in housing with accomodations for people with disabilities?", "Do you prefer to live in housing with exclusively members of the LGBTQ+ community?", "Do you prefer to live with people of the same gender?",
         "What noise level are you comfortable with in your living situation?"});
+
+        [Key]
+        public int Id { get; set; }
 
         [Display(Name = "Which neighborhood do you want to live in?")]
 		[Range(0,9)]
@@ -74,6 +78,10 @@ namespace SURoomieFinder.Models
 		[Range(0, 4)]
 		public int Question15 { get; set; }
 
-
 	}
+
+    public class ResponseDbContext : DbContext
+    {
+        public DbSet<Responses> Response { get; set; }
+    }
 }

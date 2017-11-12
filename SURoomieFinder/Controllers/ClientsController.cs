@@ -13,7 +13,9 @@ namespace SURoomieFinder.Controllers
 {
     public class ClientsController : Controller
     {
+
         private ClientDbContext db = new ClientDbContext();
+        private ResponseDbContext rdb = new ResponseDbContext();
 
         // GET: Clients
         public async Task<ActionResult> Index()
@@ -37,9 +39,9 @@ namespace SURoomieFinder.Controllers
         }
         
         [HttpPost]
-        public async Task<ActionResult>AnswerQuestions(string id = null, [Bind(Include =
-            "Question1,Question2,Question3,Question4,Question5,Question6,Question7,Question8,Question9,Question10,Question11,Question12,Question13,Question14,Question15"
-            )] Responses response)
+        public ActionResult AnswerQuestions([Bind(Include =
+            "ResponseList.Question1,ResponseList.Question2,ResponseList.Question3,ResponseList.Question4,ResponseList.Question5,ResponseList.Question6,ResponseList.Question7,ResponseList.Question8,ResponseList.Question9,ResponseList.Question10,ResponseList.Question11,ResponseList.Question12,ResponseList.Question13,ResponseList.Question14,ResponseList.Question15"
+            )] Client client, string id = null)
         {
             int myID = 0;
 
@@ -51,23 +53,11 @@ namespace SURoomieFinder.Controllers
             if (ModelState.IsValid)
             {
                 var myClient = db.Clients.Find(myID);
-                myClient.ResponseList.Question1 = response.Question1;
-                myClient.ResponseList.Question1 = response.Question2;
-                myClient.ResponseList.Question1 = response.Question3;
-                myClient.ResponseList.Question1 = response.Question4;
-                myClient.ResponseList.Question1 = response.Question5;
-                myClient.ResponseList.Question1 = response.Question6;
-                myClient.ResponseList.Question1 = response.Question7;
-                myClient.ResponseList.Question1 = response.Question8;
-                myClient.ResponseList.Question1 = response.Question9;
-                myClient.ResponseList.Question1 = response.Question10;
-                myClient.ResponseList.Question1 = response.Question11;
-                myClient.ResponseList.Question1 = response.Question12;
-                myClient.ResponseList.Question1 = response.Question13;
-                myClient.ResponseList.Question1 = response.Question14;
-                myClient.ResponseList.Question1 = response.Question15;
+                return RedirectToAction("QuestionDetails/" + myClient.Id);
+                
+                
             }
-
+            return View();
         }
 
         public ActionResult QuestionDetails(string id = null)
@@ -82,24 +72,27 @@ namespace SURoomieFinder.Controllers
 
             var myClient = db.Clients.Find(myID);
 
-            string response = "";
-            int i = 0;
-            Dictionary<string, string> output = new Dictionary<string, string>();
+            //string response = "";
+            //int i = 0;
+            //Dictionary<string, string> output = new Dictionary<string, string>();
 
-            foreach (KeyValuePair<string, int> entry in myClient.QuestionList.MyQuestionDictionary){
+            //foreach (KeyValuePair<string, int> entry in myClient.QuestionList.MyQuestionDictionary){
 
-                switch (entry.Value)
-                {
-                    case -1:
-                        response = "Not answered";
-                        break;
-                }
+            //    switch (entry.Value)
+            //    {
+            //        case -1:
+            //            response = "Not answered";
+            //            break;
+            //        case 0:
+            //            response = "Cheese";
+            //            break;
+            //    }
 
-                output.Add(entry.Key, response);
-            }
+            //    output.Add(entry.Key, response);
+            //}
 
-            ViewBag.QuestionsDictionary = output;
-            return View();
+            //ViewBag.QuestionsDictionary = output;
+            return View(myClient);
         }
         // GET: Clients/Details/5
         public async Task<ActionResult> Details(string id = null)
@@ -143,9 +136,10 @@ namespace SURoomieFinder.Controllers
         {
             if (ModelState.IsValid)
             {
+                client.ResponseList.Id = client.Id;
                 db.Clients.Add(client);
                 await db.SaveChangesAsync();
-                return RedirectToAction("Details/" + client.Id);//, client.Id);
+                return RedirectToAction("Details/" + client.Id);
             }
 
             return View(client);
@@ -237,5 +231,7 @@ namespace SURoomieFinder.Controllers
             }
             base.Dispose(disposing);
         }
+
+        
     }
 }
