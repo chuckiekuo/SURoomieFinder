@@ -7,7 +7,7 @@
 <h2>Details</h2>
 
 <div>
-    <h4>Guest</h4>
+    <h4>@Html.DisplayFor(model => model.FirstName)</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -17,14 +17,6 @@
         <dd>
             @Html.DisplayFor(model => model.Email)
         </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FirstName)
-        </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.Age)
         </dt>
@@ -77,5 +69,6 @@
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("View Answers", "ViewAnswers", new { id = Model.Id}) |
     @Html.ActionLink("Back to List", "Index")
 </p>
