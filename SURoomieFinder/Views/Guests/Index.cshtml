@@ -64,8 +64,9 @@
         </td>
 
         <td>
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("View Answers", "ViewAnswers", new { id = item.Id})
+            @Html.ActionLink("Details", "Details", new { id=item.Id })
+            <br />
+            @Html.ActionLink("Answers", "ViewAnswers", new { id = item.Id})
         </td>
     </tr>
 }
