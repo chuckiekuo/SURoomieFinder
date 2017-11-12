@@ -1,39 +1,22 @@
-﻿@model SURoomieFinder.Models.Guest
-
+﻿@model SURoomieFinder.Models.DummyGuest
 @{
 
     ViewBag.Title = "ViewAnswers";
 
 }
 
-<h2>ViewAnswers</h2>
+<h2>View Answers</h2>
 
 <div>
-    <h4>Guest</h4>
+    <h4>@Html.DisplayFor(model => model.FirstName)'s answers</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Email)
+            @Html.DisplayNameFor(model => model.Q1)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FirstName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Question1)
-        </dt>
-
-        <dd>
-           @Html.DisplayFor(model => model.Question1)
+             @Html.DisplayFor(model => model.Q1)
         </dd>
 
         <dt>

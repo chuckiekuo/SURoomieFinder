@@ -7,6 +7,7 @@ namespace SURoomieFinder.Models
 {
     public class Answers
     {
+        public Guest myGuest;
 		public int LengthAnswerPrompts;
 		public List<List<string>> AnswerPrompts = new List<List<string>>();
 		private static List<string> LocationAnswers = new List<string>(new string[] {"West Seattle", "South Downtown", "International District", "Downtown",
@@ -54,7 +55,28 @@ namespace SURoomieFinder.Models
 			LengthAnswerPrompts = AnswerPrompts.Count();
 		}
 
-		public int GetSum()
+        public Answers(Guest guest)
+        {
+            myGuest = guest;
+            AnswerPrompts.Add(LocationAnswers);
+            AnswerPrompts.Add(PriceAnswers);
+            AnswerPrompts.Add(TypeAnswers);
+            AnswerPrompts.Add(PetAnswers);
+            AnswerPrompts.Add(DrinkingAnswers);
+            AnswerPrompts.Add(SmokingAnswers);
+            AnswerPrompts.Add(FourTwentyAnswers);
+            AnswerPrompts.Add(SubstancesAnswers);
+            AnswerPrompts.Add(CleanAnswers);
+            AnswerPrompts.Add(GuestsAnswers);
+            AnswerPrompts.Add(TimeAnswers);
+            AnswerPrompts.Add(DisabilityAnswers);
+            AnswerPrompts.Add(LGBTQAnswers);
+            AnswerPrompts.Add(GenderAnswers);
+            AnswerPrompts.Add(NoiseAnswers);
+            LengthAnswerPrompts = AnswerPrompts.Count();
+        }
+
+        public int GetSum()
 		{
 			int total = 0;
 			for (int i = 0; i < LengthAnswerPrompts; i++)

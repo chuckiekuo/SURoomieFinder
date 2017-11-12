@@ -21,43 +21,83 @@ namespace SURoomieFinder.Controllers
             return View(await db.Guests.ToListAsync());
         }
 
-        public async Task<ActionResult> ViewAnswers(int? id)
+        [HttpGet]
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        public async Task<ActionResult> ViewAnswers(string id)
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("Index");
             }
 
-            Guest guest = await db.Guests.FindAsync(id);
-            Answers answers = new Answers();
+            int myId = 0;
+
+            if (!Int32.TryParse(id, out myId))
+            {
+                return RedirectToAction("Index");
+            }
+
+            Guest guest = await db.Guests.FindAsync(myId);
+            
             if (guest == null)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
 
-            List<string> output = new List<string>();
+            // List<string> output = new List<string>();
 
-            
-           output.Add(answers.AnswerPrompts[0][guest.Question1]);
-            output.Add(answers.AnswerPrompts[0][guest.Question2]);
-            output.Add(answers.AnswerPrompts[0][guest.Question3]);
-            output.Add(answers.AnswerPrompts[0][guest.Question4]);
-            output.Add(answers.AnswerPrompts[0][guest.Question5]);
-            output.Add(answers.AnswerPrompts[0][guest.Question6]);
-            output.Add(answers.AnswerPrompts[0][guest.Question7]);
-            output.Add(answers.AnswerPrompts[0][guest.Question8]);
-            output.Add(answers.AnswerPrompts[0][guest.Question9]);
-            output.Add(answers.AnswerPrompts[0][guest.Question10]);
-            output.Add(answers.AnswerPrompts[0][guest.Question11]);
-            output.Add(answers.AnswerPrompts[0][guest.Question12]);
-            output.Add(answers.AnswerPrompts[0][guest.Question13]);
-            output.Add(answers.AnswerPrompts[0][guest.Question14]);
-            output.Add(answers.AnswerPrompts[0][guest.Question15]);
+            DummyGuest printGuest = new DummyGuest(guest);
 
-            ViewBag.printList = output;
+            //output.Add(guest.FirstName);
+            //output.Add(guest.Id.ToString());
+            //output.Add(answers.AnswerPrompts[0][guest.Question1]);
+            //output.Add(answers.AnswerPrompts[1][guest.Question2]);
+            //output.Add(answers.AnswerPrompts[2][guest.Question3]);
+            //output.Add(answers.AnswerPrompts[3][guest.Question4]);
+            //output.Add(answers.AnswerPrompts[4][guest.Question5]);
+            //output.Add(answers.AnswerPrompts[5][guest.Question6]);
+            //output.Add(answers.AnswerPrompts[6][guest.Question7]);
+            //output.Add(answers.AnswerPrompts[7][guest.Question8]);
+            //output.Add(answers.AnswerPrompts[8][guest.Question9]);
+            //output.Add(answers.AnswerPrompts[9][guest.Question10]);
+            //output.Add(answers.AnswerPrompts[10][guest.Question11]);
+            //output.Add(answers.AnswerPrompts[11][guest.Question12]);
+            //output.Add(answers.AnswerPrompts[12][guest.Question13]);
+            //output.Add(answers.AnswerPrompts[13][guest.Question14]);
+            //output.Add(answers.AnswerPrompts[14][guest.Question15]);
+
+            return View(printGuest);
+        }
+
+        public ActionResult MyPortal(string id = null)
+        {
+            if (id == null)
+            {
+                return RedirectToAction("Index");
+            }
+
+            int myId = 0;
+
+            if (!Int32.TryParse(id, out myId))
+            {
+                return RedirectToAction("Index");
+            }
+
+            Guest guest = db.Guests.Find(myId);
+
+            if (guest == null)
+            {
+                return RedirectToAction("Index");
+            }
 
             return View(guest);
+
         }
+
         // GET: Guests/Details/5
         public async Task<ActionResult> Details(int? id)
         {
@@ -115,8 +155,7 @@ namespace SURoomieFinder.Controllers
 
             List<Responses> SortedList = myResponseList.OrderBy(o => o.myMatchScore).ToList();
             SortedList.Reverse();
-            //ViewBag.MatchList = myResult;
-            ViewBag.MatchList = SortedList;
+
             return View(SortedList);
         }
 
@@ -137,7 +176,7 @@ namespace SURoomieFinder.Controllers
             {
                 db.Guests.Add(guest);
                 await db.SaveChangesAsync();
-                return RedirectToAction("Details/" + guest.Id);
+                return RedirectToAction("MyPortal/" + guest.Id);
             }
 
             return View(guest);
