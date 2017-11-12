@@ -30,6 +30,12 @@ namespace SURoomieFinder.Controllers
         public ActionResult Login([Bind(Include = "Email,Password")]Guest guest)
         {
             var entry = db.Guests.FirstOrDefault(acc => acc.Email == guest.Email);
+
+            if (entry == null)
+            {
+                return RedirectToAction("Login");
+            }
+
             return RedirectToAction("MyPortal/" + (entry.Id.ToString()));
         }
 

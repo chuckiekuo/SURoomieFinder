@@ -13,7 +13,7 @@ namespace SURoomieFinder.Models
         public int Id { get; set; }
 		[Required(ErrorMessage = "Must include a valid SeattleU E-mail address!")]
 		[DataType(DataType.EmailAddress)]
-		[RegularExpression(@"[A-Za-z0-9]+@[seattleu.edu]$", ErrorMessage = "Not a valid SeattleU E-mail address!")]
+		[RegularExpression("[A-Za-z0-9]+@seattleu.edu$", ErrorMessage = "Not a valid SeattleU E-mail address!")]
         public string Email { get; set; }
 
 		[Required(ErrorMessage = "Must include a password!")]

@@ -10,6 +10,7 @@
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
+            <a class="navbar-brand navbar-right" href="~/Guests/Login">Login</a>
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
@@ -20,9 +21,7 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Login", "Login", "Guests")</li>
-                    <li>@Html.ActionLink("Register", "Create", "Guests")</li>
-                    <li>@Html.ActionLink("My Profile", "MyPortal", "Guests")</li>
+                    <li>@Html.ActionLink("View List", "Index", "Guests")</li>
                 </ul>
             </div>
         </div>
