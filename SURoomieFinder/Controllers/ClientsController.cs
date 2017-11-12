@@ -24,40 +24,23 @@ namespace SURoomieFinder.Controllers
         }
 
         [HttpGet]
-        public ActionResult AnswerQuestions(string id = null)
+        public ActionResult AnswerQuestions()
         {
-            int myID = 0;
-
-            if (!Int32.TryParse(id, out myID))
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-
-            var myClient = db.Clients.Find(myID);
-
-            return View(myClient);
+            return View();
         }
         
         [HttpPost]
-        public ActionResult AnswerQuestions([Bind(Include =
-            "ResponseList.Question1,ResponseList.Question2,ResponseList.Question3,ResponseList.Question4,ResponseList.Question5,ResponseList.Question6,ResponseList.Question7,ResponseList.Question8,ResponseList.Question9,ResponseList.Question10,ResponseList.Question11,ResponseList.Question12,ResponseList.Question13,ResponseList.Question14,ResponseList.Question15"
-            )] Client client, string id = null)
+        public async Task<ActionResult> AnswerQuestions([Bind(Include =
+            "Question1,Question2,Question3,Question4,Question5,Question6,Question7,Question8,Question9,Question10,Question11,Question12,Question13,Question14,Question15"
+            )] Client client)
         {
-            int myID = 0;
-
-            if (!Int32.TryParse(id, out myID))
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-
             if (ModelState.IsValid)
             {
-                var myClient = db.Clients.Find(myID);
-                return RedirectToAction("QuestionDetails/" + myClient.Id);
-                
-                
+                db.Entry(client).State = EntityState.Modified;
+                await db.SaveChangesAsync();
+                return RedirectToAction("Index");
             }
-            return View();
+            return View(client);
         }
 
         public ActionResult QuestionDetails(string id = null)
@@ -136,7 +119,6 @@ namespace SURoomieFinder.Controllers
         {
             if (ModelState.IsValid)
             {
-                client.ResponseList.Id = client.Id;
                 db.Clients.Add(client);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Details/" + client.Id);
