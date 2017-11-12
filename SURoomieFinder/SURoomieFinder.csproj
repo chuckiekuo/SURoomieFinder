@@ -149,7 +149,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="BusRules\Algorithm.cs" />
-    <Compile Include="Controllers\ClientsController.cs" />
+    <Compile Include="Controllers\GuestsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\QuestionsController.cs" />
@@ -157,8 +157,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Answers.cs" />
-    <Compile Include="Models\Client.cs" />
-    <Compile Include="Models\ClientResponseViewModel.cs" />
+    <Compile Include="Models\Guest.cs" />
     <Compile Include="Models\Questions.cs" />
     <Compile Include="Models\Responses.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -218,6 +217,16 @@
     <Content Include="Views\Clients\Index.cshtml" />
     <Content Include="Views\Questions\QuestionDetails.cshtml" />
     <Content Include="Views\Clients\QuestionDetails.cshtml" />
+    <Content Include="Views\Clients2\Create.cshtml" />
+    <Content Include="Views\Clients2\Delete.cshtml" />
+    <Content Include="Views\Clients2\Details.cshtml" />
+    <Content Include="Views\Clients2\Edit.cshtml" />
+    <Content Include="Views\Clients2\Index.cshtml" />
+    <Content Include="Views\Guests\Create.cshtml" />
+    <Content Include="Views\Guests\Delete.cshtml" />
+    <Content Include="Views\Guests\Details.cshtml" />
+    <Content Include="Views\Guests\Edit.cshtml" />
+    <Content Include="Views\Guests\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

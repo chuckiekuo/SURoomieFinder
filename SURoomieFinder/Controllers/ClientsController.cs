@@ -24,22 +24,53 @@ namespace SURoomieFinder.Controllers
         }
 
         [HttpGet]
-        public ActionResult AnswerQuestions()
+        public ActionResult AnswerQuestions(string id = null)
         {
-            return View();
+            int myId = 0;
+
+            if (id == null)
+            {
+                new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            if (!Int32.TryParse(id, out myId))
+            {
+                new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Client myClient = db.Clients.Find(myId);
+
+            return View(myClient);
         }
         
         [HttpPost]
         public async Task<ActionResult> AnswerQuestions([Bind(Include =
             "Question1,Question2,Question3,Question4,Question5,Question6,Question7,Question8,Question9,Question10,Question11,Question12,Question13,Question14,Question15"
-            )] Client client)
+            )] Client client, string id = null)
         {
+            int myId = 0;
+
+            if (id == null)
+            {
+                new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            if (!Int32.TryParse(id, out myId))
+            {
+                new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Client myClient = db.Clients.Find(myId);
+
+            myClient.Question1 = client.Question1;
+
             if (ModelState.IsValid)
             {
                 db.Entry(client).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
+
             return View(client);
         }
 
